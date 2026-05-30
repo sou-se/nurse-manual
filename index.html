@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>看護師業務マニュアル｜整形外科外来</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f5f7fa;--surface:#fff;--surface2:#eef2ff;--nav:#1e2a4a;--accent:#2563eb;--danger:#dc2626;--text:#1a1a2e;--text2:#4a5568;--text3:#718096;--border:#e2e8f0;--sh:0 1px 3px rgba(0,0,0,.08);--sh2:0 4px 12px rgba(0,0,0,.1);--hh:64px}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+header{background:var(--nav);border-bottom:3px solid var(--accent);padding:0 20px;position:fixed;top:0;left:0;right:0;z-index:100;height:var(--hh);display:flex;align-items:center;gap:16px;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.logo{width:36px;height:36px;background:linear-gradient(135deg,#2563eb,#059669);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.header-title{flex-shrink:0}
+h1{font-size:.95rem;font-weight:700;color:#fff;line-height:1.2}
+h1 span{display:block;font-size:.65rem;color:#94a3b8;font-weight:400;margin-top:1px}
+.search-wrap{flex:1;position:relative;max-width:480px;margin-left:auto}
+#search{width:100%;padding:7px 34px 7px 14px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font-size:.88rem;font-family:inherit;transition:all .2s}
+#search:focus{outline:none;border-color:rgba(255,255,255,.5)}
+#search::placeholder{color:rgba(255,255,255,.4)}
+.search-icon{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.45);font-size:15px;pointer-events:none}
+#search-count{font-size:.72rem;color:#94a3b8;white-space:nowrap;flex-shrink:0}
+.layout{display:flex;position:fixed;top:var(--hh);left:0;right:0;bottom:0}
+nav{width:200px;background:var(--nav);border-right:1px solid rgba(255,255,255,.08);overflow-y:auto;flex-shrink:0;padding:10px 0}
+nav::-webkit-scrollbar{width:4px}
+nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:2px}
+.toc-item{display:block;padding:10px 18px;color:#b8c8e8;text-decoration:none;font-size:.84rem;border-left:3px solid transparent;transition:all .2s;cursor:pointer;line-height:1.4}
+.toc-item:hover{background:rgba(255,255,255,.07);color:#fff;border-left-color:rgba(255,255,255,.3)}
+.toc-item.active{background:rgba(37,99,235,.35);color:#fff;border-left-color:var(--accent);font-weight:700}
+main{flex:1;overflow-y:auto;padding:28px 36px;background:var(--bg)}
+main::-webkit-scrollbar{width:6px}
+main::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.section{display:block;animation:fadeIn .25s ease}
+.section.hidden{display:none}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border)}
+.section-num{width:50px;height:50px;background:linear-gradient(135deg,#2563eb,#059669);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;box-shadow:var(--sh2)}
+h2{font-size:1.35rem;font-weight:800;color:var(--text)}
+
+/* ── ミニ目次 ── */
+.mini-toc{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:24px;box-shadow:var(--sh)}
+.mini-toc-title{font-size:.8rem;font-weight:700;color:var(--text3);margin-bottom:10px;letter-spacing:.04em}
+.mini-toc-links{display:flex;flex-wrap:wrap;gap:8px}
+.mini-toc-link{display:inline-block;padding:5px 14px;background:var(--surface2);border:1px solid #c7d7ff;border-radius:20px;color:var(--accent);font-size:.82rem;font-weight:600;text-decoration:none;transition:all .18s;cursor:pointer}
+.mini-toc-link:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-1px)}
+
+/* ── HIERARCHY ── */
+h3{font-size:1.05rem;font-weight:800;color:#fff;background:var(--nav);margin:28px 0 0 0;padding:11px 18px;border-radius:8px;scroll-margin-top:16px}
+h4{font-size:.95rem;font-weight:700;color:var(--accent);background:var(--surface2);margin:14px 0 0 20px;padding:8px 16px;border-left:4px solid var(--accent);border-radius:0 6px 6px 0}
+.box-label{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:10px 0 2px 36px;color:var(--text2);font-weight:700;font-size:.88rem}
+ul{list-style:none;margin:4px 0 6px 48px}
+li{padding:7px 12px 7px 18px;position:relative;line-height:1.8;font-size:.91rem;color:var(--text);border-bottom:1px solid var(--border)}
+li:last-child{border-bottom:none}
+li::before{content:"●";position:absolute;left:4px;color:var(--accent);font-size:.45rem;top:14px}
+.alert{display:flex;align-items:baseline;gap:10px;margin:8px 0 8px 48px;padding:6px 0;color:#b91c1c;font-size:.9rem;font-weight:600;line-height:1.75;background:none;border:none}
+.alert::before{content:"✔ checkpoint!";background:#dc2626;color:#fff;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;letter-spacing:.03em}
+.note{background:#fffbeb;border-left:4px solid #f59e0b;padding:8px 14px;margin:8px 0 8px 36px;color:#92400e;font-size:.85rem;border-radius:0 6px 6px 0;line-height:1.7}
+.body-text{font-size:.88rem;line-height:1.8;margin:4px 0 4px 36px;color:var(--text2);padding:4px 10px}
+.data-table{width:calc(100% - 36px);margin:12px 0 12px 36px;border-collapse:collapse;border-radius:10px;overflow:hidden;box-shadow:var(--sh)}
+.data-table thead tr{background:#c8cdd6;color:#111}
+.data-table th{padding:10px 16px;text-align:left;font-size:.88rem;font-weight:700;border-bottom:2px solid var(--border)}
+.data-table td{padding:9px 16px;font-size:.88rem;border-bottom:1px solid var(--border);color:var(--text)}
+.data-table tbody tr{background:#fff}
+.data-table tbody tr:hover{background:#e8f0fe}
+mark{background:#fef08a;color:#713f12;border-radius:3px;padding:0 3px}
+.home-view{display:flex;flex-wrap:wrap;gap:16px;padding:4px 0}
+.home-card{flex:1;min-width:160px;background:var(--surface);border:2px solid var(--border);border-radius:14px;padding:20px 18px;cursor:pointer;transition:all .2s;text-decoration:none;display:block;box-shadow:var(--sh)}
+.home-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--sh2)}
+.home-card .num{font-size:2rem;margin-bottom:8px}
+.home-card .ttl{font-size:.9rem;font-weight:700;color:var(--text);line-height:1.4}
+.no-results{text-align:center;padding:60px;color:var(--text3)}
+.result-group{margin-bottom:28px}
+.result-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin:8px 0;font-size:.9rem;line-height:1.75;color:var(--text);box-shadow:var(--sh)}
+@media(max-width:680px){nav{display:none}main{padding:20px 14px}.data-table{width:100%;margin-left:0}.mini-toc-links{gap:6px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🏥</div>
+<div class="header-title"><h1>看護師業務マニュアル<span>整形外科外来｜想千グループ</span></h1></div>
+<div class="search-wrap"><input type="text" id="search" placeholder="キーワード検索..." autocomplete="off"><span class="search-icon">🔍</span></div>
+<div id="search-count"></div>
+</header>
+<div class="layout">
+<nav>
+<a href="#" class="toc-item active" data-target="home" id="toc-home">🏠 ホーム</a>
+<a href="#" class="toc-item" data-target="s1" id="toc-s1">① 診察全般</a>
+<a href="#" class="toc-item" data-target="s2" id="toc-s2">② 処置・注射</a>
+<a href="#" class="toc-item" data-target="s3" id="toc-s3">③ 書類</a>
+<a href="#" class="toc-item" data-target="s4" id="toc-s4">④ レントゲン関連</a>
+<a href="#" class="toc-item" data-target="s5" id="toc-s5">⑤ 電子カルテ</a>
+<a href="#" class="toc-item" data-target="s6" id="toc-s6">⑥ リハビリ連携</a>
+<a href="#" class="toc-item" data-target="s7" id="toc-s7">⑦ 緊急・イレギュラー対応</a>
+<a href="#" class="toc-item" data-target="s8" id="toc-s8">⑧ その他</a>
+<a href="#" class="toc-item" data-target="s9" id="toc-s9">⑨ 交通事故</a>
+</nav>
+<main id="main">
+<div id="home" class="section">
+<div class="section-header"><div class="section-num" style="font-size:1.6rem">📋</div><div><h2>看護師業務マニュアル</h2><p style="margin:4px 0 0;font-size:.82rem;color:var(--text3)">整形外科外来｜想千グループ｜2026年5月</p></div></div>
+<p style="color:var(--text3);margin-bottom:22px;font-size:.9rem">セクションを選択、またはキーワード検索してください。</p>
+<div class="home-view"><a class="home-card" href="#" data-target="s1"><div class="num">①</div><div class="ttl">診察全般</div></a><a class="home-card" href="#" data-target="s2"><div class="num">②</div><div class="ttl">処置・注射</div></a><a class="home-card" href="#" data-target="s3"><div class="num">③</div><div class="ttl">書類</div></a><a class="home-card" href="#" data-target="s4"><div class="num">④</div><div class="ttl">レントゲン関連</div></a><a class="home-card" href="#" data-target="s5"><div class="num">⑤</div><div class="ttl">電子カルテ</div></a><a class="home-card" href="#" data-target="s6"><div class="num">⑥</div><div class="ttl">リハビリ連携</div></a><a class="home-card" href="#" data-target="s7"><div class="num">⑦</div><div class="ttl">緊急・イレギュラー対応</div></a><a class="home-card" href="#" data-target="s8"><div class="num">⑧</div><div class="ttl">その他</div></a><a class="home-card" href="#" data-target="s9"><div class="num">⑨</div><div class="ttl">交通事故</div></a></div>
+</div>
+<section id="s1" class="section hidden"><div class="section-header"><span class="section-num">①</span><h2>診察全般</h2></div><div class="section-body"><div class="mini-toc"><div class="mini-toc-title">📑 このセクションの内容</div><div class="mini-toc-links"><a href="#s1-h0" class="mini-toc-link">診療開始前の準備</a><a href="#s1-h1" class="mini-toc-link">午後診察開始時の確認</a><a href="#s1-h2" class="mini-toc-link">診察中の清掃・整理整頓</a><a href="#s1-h3" class="mini-toc-link">診療終了後の⽚付け</a><a href="#s1-h4" class="mini-toc-link">患者への挨拶</a><a href="#s1-h5" class="mini-toc-link">⼥性患者の診察同席</a><a href="#s1-h6" class="mini-toc-link">患者への声かけ・退出誘導</a><a href="#s1-h7" class="mini-toc-link">診察前の介助</a><a href="#s1-h8" class="mini-toc-link">患者誘導</a><a href="#s1-h9" class="mini-toc-link">診察室・バックヤードの環境整備</a><a href="#s1-h10" class="mini-toc-link">診察室での⼼得</a></div></div><h3 id="s1-h0">■ 診療開始前の準備</h3>
+<ul>
+<li>クリニックに⼊る前に採⾎受渡ボックスを回収して持って⼊る</li>
+<li>室内に不要なダンボール・ペットボトル等がないか確認。あれば破棄する</li>
+<li>電⼦カルテ・採⾎⽤ PC・PACS の電源を⼊れる</li>
+<li>処置準備台の上に書類がないか確認。ある場合は破棄してよいかチェックする</li>
+<li>レントゲン室のスイッチ・PACS の本体・DEXA のスイッチを⼊れ、DEXA のキャリブレーションを⾏う</li>
+<li>プリンターの印刷⽤紙を確認。不⾜していれば補充する</li>
+<li>処置カートの材料の不⾜分を補充する</li>
+<li>薬剤・シリンジの状況を確認して補充する</li>
+<li>採⾎データを電⼦カルテに送る</li>
+<li>医療⽤廃棄物のゴミ箱が満タンの場合は封をして新しいものを置き、事務に伝えて回収に来てもらう</li>
+<li>診察の開始前までに上記を完了する</li>
+</ul>
+<h3 id="s1-h1">■ 午後診察開始時の確認</h3>
+<ul>
+<li>レントゲン室・診察室・処置室のゴミ・⽚付けができているか確認する</li>
+<li>枕の整頓など、各室の整理整頓を確認する</li>
+</ul>
+<h3 id="s1-h2">■ 診察中の清掃・整理整頓</h3>
+<ul>
+<li>患者がベッドに寝た際はゴミや埃を除去する</li>
+<li>床のゴミや患者が靴を脱いだ時などに出るゴミはハンディクリーナーで清掃する</li>
+<li>診察室・処置室は常に整理整頓を維持し、清潔な状態を保つ</li>
+</ul>
+<h3 id="s1-h3">■ 診療終了後の⽚付け</h3>
+<ul>
+<li>採⾎ボックスを確認。採⾎が全部ボックスに⼊っていることをチェックし、採⾎情報を印刷してボックスに同封する</li>
+<li>診察室 2 と処置室の PC の電源を全て切る（アップデート中の場合は事務の指⽰に従う）</li>
+<li>レントゲン室の電源・PACS・DEXA の PC の電源を落とす</li>
+<li>書類の処理︓レントゲン指⽰書のみ破棄、その他の書類は事務に確認する</li>
+<li>室内を軽く整理する</li>
+<li>採⾎のシール発⾏機の電源を切る</li>
+<li>採⾎ボックスをクリニック前に設置する</li>
+</ul>
+<div class="alert">採⾎ボックスの設置は必ず忘れずに⾏うこと</div>
+<ul>
+<li>採⾎がない⽇はファルコに連絡をする</li>
+</ul>
+<div class="box-label">【週末限定】</div>
+<ul>
+<li>DEXA の主電源と蛸⾜のスイッチを切る</li>
+</ul>
+<div class="alert">必ずレントゲン装置・PACS・DEXA パソコン本体の電源が切れていることを確認してから実施す</div>
+<p class="body-text">ること</p>
+<h3 id="s1-h4">■ 患者への挨拶</h3>
+<ul>
+<li>⼊室時︓「こんにちは」と声をかける</li>
+<li>退出時︓「お⼤事にしてください」としっかり声をかける</li>
+<li>レントゲン等で⼀時退出の場合は待合誘導の声かけを⾏う</li>
+</ul>
+<h3 id="s1-h5">■ ⼥性患者の診察同席</h3>
+<ul>
+<li>⼥性患者の診察時は、処置をしていない場合でも必ず同席する（トラブル防⽌）</li>
+<li>同席中はカルテ操作はせず、同席に専念すること</li>
+<li>初診カルテ⼊⼒より同席を優先する（カルテ⼊⼒は事務でも対応可能）</li>
+</ul>
+<h3 id="s1-h6">■ 患者への声かけ・退出誘導</h3>
+<p class="body-text">医師がレントゲン指⽰を出した後や診察終了後は、適切なタイミングで患者に声をかけ退出を促す。</p>
+<ul>
+<li>レントゲンの場合︓「レントゲン室よりお呼びいたしますので、待合室にてお座りになってお待ちください」</li>
+<li>診察終了の場合︓「お会計の準備をいたしますので、待合室にてお座りになってお待ちください」</li>
+</ul>
+<h3 id="s1-h7">■ 診察前の介助</h3>
+<ul>
+<li>患者が靴を脱ぐ、包帯を外す、⾐服を脱ぐ際は医師より先に介助する</li>
+</ul>
+<h3 id="s1-h8">■ 患者誘導</h3>
+<ul>
+<li>ドクターキューブの患者待ち時間が 60 分を超えてきたら医師に報告し、早めに診察を促す（医師が気づいていない場合があるため）</li>
+<li>医師が「レントゲンに⾏きましょう」と⾔った場合は、「前でお待ちください」と伝えて患者を退出させ、レントゲン室へ誘導する</li>
+<li>医師が処置室での処置・サポーター・装具装着を⾏った場合は、話が⼀段落したタイミングで患者を別室へ移動するよう誘導し、そちらで対応を⾏う</li>
+<li>エコーを⾏う場合は処置室または第 2 診察室に移動してもらうことが多いため、あらかじめ準備しておく</li>
+<li>待合コメントに「座」と記載がある患者、または移動がゆっくりな⾞椅⼦の患者は、移動に時間がかかるため 1 診または 2 診にあらかじめ⼊れておく。診察室に⼊ってもらい、診察を受ける準備を整えておく</li>
+<li>患者が「⾜が痛い」などと訴えている場合は、待機中に靴・靴下を脱いでもらっておく。医師が⼊室した際にすぐ診察に取りかかれるよう事前準備を⼼がける</li>
+<li>待ち時間が増えてきた場合は、患者を 1 診・2 診に分けて⼊れることがある。医師に「この⽅は 2 診に⼊れておきますね」と積極的に声をかけ、診察がスムーズに回るよう⼯夫・提案してよい</li>
+</ul>
+<div class="note">※ 2 診振り分けの例︓アルツなどの定期注射の患者・移動がゆっくりな患者・レントゲン撮影後の患者など</div>
+<div class="note">※ 初診患者は基本的に 1 診で診ることが多い</div>
+<h3 id="s1-h9">■ 診察室・バックヤードの環境整備</h3>
+<ul>
+<li>患者退出後はベッドのゴミを除去し、枕を整える</li>
+<li>患者退出後、床にゴミがあればハンディクリーナーで清掃する</li>
+<li>患者がタバコ等の臭いの場合、退出後に消臭スプレーを使⽤する</li>
+<li>バックヤードの机にはシリンジ・針等の定位置物品のみを置く。私物・⼊荷段ボール等は撤去または適切に保管する</li>
+<li>患者の視界に不要なものを置かないよう常に意識する（例︓無駄な印刷⽤紙・ペットボトル・ゴミ・診療に関係ないものなど）</li>
+</ul>
+<h3 id="s1-h10">■ 診察室での⼼得</h3>
+<ul>
+<li>常に整理整頓を⼼がける。ゴミを⾒つけたら掃除機や拭き掃除を⾏い、新しい患者が⼊室する際には診察室・処置室をきれいな状態にしておく</li>
+<li>患者がレントゲン室・診察室・処置室にいる間は、笑い声・無駄話・私語等を慎むこと</li>
+<li>わからないことは患者・医師・事務いずれに対しても「わからない」と正直に伝える</li>
+</ul></div></section>
+<section id="s2" class="section hidden"><div class="section-header"><span class="section-num">②</span><h2>処置・注射</h2></div><div class="section-body"><div class="mini-toc"><div class="mini-toc-title">📑 このセクションの内容</div><div class="mini-toc-links"><a href="#s2-h0" class="mini-toc-link">エコー使⽤時の共通配置</a><a href="#s2-h1" class="mini-toc-link">外固定</a><a href="#s2-h2" class="mini-toc-link">採⾎</a><a href="#s2-hinj" class="mini-toc-link">注射一般</a><a href="#s2-h3" class="mini-toc-link">各種ブロック注射</a><a href="#s2-h4" class="mini-toc-link">腱鞘内注射</a><a href="#s2-h5" class="mini-toc-link">関節注射</a><a href="#s2-h6" class="mini-toc-link">トリガーポイント注射</a><a href="#s2-h7" class="mini-toc-link">ハイドロリリース</a><a href="#s2-h8" class="mini-toc-link">処置︓創傷対応</a></div></div><h3 id="s2-h0">■ エコー使⽤時の共通配置</h3>
+<ul>
+<li>基本は左⼿でエコーを持ち、右⼿でシリンジ操作を⾏う</li>
+<li>医師の右側にエコー本体と椅⼦が来るよう、事前に配置しておく</li>
+<li>対象処置︓神経根ブロック・ハイドロリリース・膝関節（PRP・エコーガイド下）・その他エコー使⽤処置すべて</li>
+<li>エコー準備時は電源を⼊れ、患者 ID を⼊⼒しておく</li>
+<li>バッテリーが減ることがあるため、可能であれば電源プラグを挿しておく</li>
+</ul>
+<h3 id="s2-h1">■ 外固定</h3>
+<h4>▶ 種類の概要</h4>
+<ul>
+<li>シーネ（添⽊）・ギプス（完全固定）・ギプスカットの 3 種類があり、それぞれ準備が異なる（写真参照）</li>
+</ul>
+<h4>▶ シーネ  弾性包帯サイズ</h4>
+<table class="data-table"><thead><tr><th>部位</th><th>サイズ</th></tr></thead><tbody><tr><td>指〜⼿関節</td><td>2 号・3 号</td></tr><tr><td>肘</td><td>3 号</td></tr><tr><td>⾜趾〜⾜</td><td>2 号・3 号</td></tr><tr><td>⾜関節</td><td>3 号</td></tr><tr><td>膝</td><td>4 号</td></tr></tbody></table>
+<div class="note">※ ⼩児は全部位 2 号を⽤意</div>
+<h4>▶ シーネ  準備・⼿順</h4>
+<ul>
+<li>体位はギプスと同様（部位別体位を参照）</li>
+<li>タオルを⼿洗い場台に敷く（シーネを濡らした後の余分な⽔分除去⽤）</li>
+<li>部位に応じた弾性包帯（規定の号数）・包帯を⽌めるテープを準備</li>
+<li>患者の服が汚れないよう、バスタオルなどでギプスをする部分以外の場所を覆う（ギプスの⽔が付くと硬くなるため）</li>
+<li>⾜・膝などの処置では床にシートを敷いておく（ギプスの⽔が床に落ちると固まって汚れるため）</li>
+<li>シーネを医師が本体からカットしたら、留め具を受け取りすぐにパックを密閉する（開けたままだと中のシーネが固まる）</li>
+</ul>
+<div class="note">※ 密閉は少し余裕を持たせること</div>
+<ul>
+<li>医師が弾性包帯で固定した後は、医師の指⽰通り固まるまで形を保持する</li>
+</ul>
+<h4>▶ ⾻折整復時の対応</h4>
+<ul>
+<li>⾻折整復後は必ずシーネ固定を⾏う</li>
+<li>整復はレントゲン室で⾏うことが多い（処置室の場合は通常⼿順）</li>
+<li>レントゲン室での整復時︓シーネパック（必要号数）・弾性包帯・ギプス⽤はさみを診察室後ろの準備台に配置し、整復後すぐ開始できるよう準備</li>
+</ul>
+<h4>▶ アームスリング</h4>
+<ul>
+<li>肩・上肢固定時（指を除く）はアームスリングを合わせて準備（箱から出さなくてよい）</li>
+</ul>
+<div class="alert">アームスリングは⾃費コストが発⽣するため注意</div>
+<h4>▶ ギプスブーツ</h4>
+<ul>
+<li>ギプスをつけた⾜に装着する装具</li>
+</ul>
+<div class="alert">1 つ約 2,000 円の⾃費コストが発⽣するため、使⽤前に必ず患者に確認すること</div>
+<p class="body-text">コスト処理は以下いずれかで対応︓</p>
+<ul>
+<li>⾃分でコストを⼊⼒する</li>
+<li>事務に伝える</li>
+<li>カルテのコメント欄に記載する</li>
+</ul>
+<h4>▶ ギプス  ニールキャストサイズ</h4>
+<table class="data-table"><thead><tr><th>部位</th><th>サイズ</th></tr></thead><tbody><tr><td>指〜⼿関節</td><td>2 号</td></tr><tr><td>肘</td><td>3 号</td></tr><tr><td>⾜趾〜⾜</td><td>2 号・3 号</td></tr><tr><td>⾜関節</td><td>3 号</td></tr><tr><td>膝</td><td>4 号</td></tr></tbody></table>
+<div class="note">※ ⼩児は 2 号、⼤柄な患者は 4 号を準備。パックは開封せず準備のみ</div>
+<h4>▶ ギプス  準備⼿順</h4>
+<ul>
+<li>部位に応じたニールキャスト・下巻き（ブルーラップ等）・ナイロン⼿袋（医師⽤）・ギプス⽤はさみを準備</li>
+<li>バケツにぬるま湯を 15cm 程度張る</li>
+<li>汚れ防⽌のためバスタオルをベッドに敷く</li>
+<li>患者の服が汚れないよう、バスタオルなどでギプスをする部分以外の場所を覆う（ギプスの⽔が付くと硬くなるため）</li>
+<li>⾜・膝などの処置では床にシートを敷いておく（ギプスの⽔が床に落ちると固まって汚れるため）</li>
+<li>部位別の患者体位に整える（下記参照）</li>
+<li>準備完了後、医師を呼ぶ</li>
+</ul>
+<div class="note">※ 慣れてきたらストッキネットのカットも事前準備してよい</div>
+<h4>▶ ギプス  部位別患者体位</h4>
+<p class="body-text">部位</p>
+<p class="body-text">体位</p>
+<p class="body-text">指〜⼿関節・前腕</p>
+<p class="body-text">ベッドに座り、台の上に患側の肘を⽴てる</p>
+<p class="body-text">肘</p>
+<p class="body-text">ベッドに座り、肩まで腕を出す（必要に応じて脱⾐）。バスタオ</p>
+<p class="body-text">ルを膝にかける</p>
+<p class="body-text">⾜趾〜⾜関節</p>
+<p class="body-text">ベッドに伏臥位、患側を⼿前にして膝を曲げる。膝にタオルを巻</p>
+<p class="body-text">き汚れ防⽌</p>
+<p class="body-text">膝</p>
+<p class="body-text">ベッドに浅く腰掛け、患側下肢を出す。踵を⾜台に乗せ膝をまっ</p>
+<p class="body-text">すぐに。床にタオルを敷く</p>
+<h4>▶ ギプス  ⼊⽔タイミング（重要）</h4>
+<div class="alert">ニールキャストをバケツに⼊れるのは医師の「⼊れていいよ」の指⽰後</div>
+<div class="alert">医師がナイロン⼿袋を装着する前に⼊れない（先に固まってしまうため）</div>
+<h4>▶ ギプス  後処理</h4>
+<ul>
+<li>巻き終わったら⼿袋をつけ、医師の指⽰通りに形を固定して固まるまで保持</li>
+<li>完全に固まったらギプスの端をテーピングテープで保護（⽪膚の損傷防⽌）</li>
+<li>末梢の指が動くか・締め付けが強くないかを確認して終了</li>
+</ul>
+<h4>▶ ギプスカット  準備</h4>
+<ul>
+<li>ギプスカッター・下敷き・ハンディクリーナー（または掃除機）を処置室に準備</li>
+<li>上肢︓ベッドに座位、台の上に⼿を置く</li>
+<li>下肢︓仰臥位、患側を⼿前にする</li>
+</ul>
+<h4>▶ ギプスカット  後処理</h4>
+<ul>
+<li>カット後の残存ギプス（半分）をキャストとして使⽤</li>
+<li>ストッキネットでしっかり包み、テーピングテープでギプスが露出しないよう覆う（使⽤する側は医師の指⽰に従う）</li>
+<li>弾性包帯でキツすぎないように固定して完了</li>
+</ul>
+<h3 id="s2-h2">■ 採⾎</h3>
+<ul>
+<li>採⾎⼿技はやりやすい⽅法で実施してよい</li>
+</ul>
+<div class="alert">2 回実施しても取れない場合、または明らかに困難な場合は医師に報告すること</div>
+<ul>
+<li>採⾎指⽰が出るとパソコン横のシール発⾏機からラベルが発⾏される</li>
+</ul>
+<div class="alert">採⾎後は患者間違い防⽌のため、ラベルを必ずすぐにスピッツに貼ること</div>
+<div class="box-label">【採⾎スピッツ】</div>
+<ul>
+<li>基本 3 本</li>
+</ul>
+<div class="alert">凝固系を取る場合は 4 本になるため注意</div>
+<div class="box-label">【患者からの質問対応】</div>
+<ul>
+<li>採⾎項⽬についての質問はその場で説明してよい</li>
+</ul>
+<div class="alert">細かな内容・専⾨外の質問には「医師に確認します」と伝え、その場で回答しないこと</div>
+<h3 id="s2-hinj">■ 注射一般</h3>
+<div class="alert">注射をシリンジに吸う前に必ず医師に確認すること（ダブルチェック）。特に整形外科ではステロイドは種類・量が重要なので必ず確認してください。</div>
+<h3 id="s2-h3">■ 各種ブロック注射</h3>
+<h4>▶ 神経根ブロック</h4>
+<div class="box-label">【共通準備（信貴・あわ）】</div>
+<ul>
+<li>10ml シリンジ</li>
+<li>キシロカイン 10ml ＋ リンデロン 4mg</li>
+<li>カテラン針（G 数は Dr 指⽰）</li>
+</ul>
+<div class="box-label">【体位・エコー配置（信貴）】</div>
+<ul>
+<li>患側上の側臥位</li>
+<li>エコー︓患側右→⾜側、患側左→頭側（左⼿でエコー、右⼿でシリンジ操作）</li>
+</ul>
+<div class="box-label">【体位・エコー配置（あわ）】</div>
+<ul>
+<li>仰臥位で患側が⼿前</li>
+<li>エコー︓患側右→⾜側、患側左→頭側（左⼿でエコー、右⼿でシリンジ操作）</li>
+</ul>
+<h4>▶ 仙⾻硬膜外ブロック</h4>
+<div class="box-label">【準備】</div>
+<ul>
+<li>20ml シリンジ</li>
+<li>⽣⾷ 10ml ＋ キシロカイン 10ml ＋ リンデロン 4mg</li>
+<li>カテラン針（G 数は Dr 指⽰）・シルキーポア</li>
+</ul>
+<div class="alert">針は通常と逆⽅向（⼝が下向き）に装着</div>
+<div class="box-label">【体位】</div>
+<ul>
+<li>腹臥位、股関節下にタオルを筒状に丸めて腰を浮かせる</li>
+</ul>
+<div class="box-label">【注射後管理】</div>
+<ul>
+<li>患側下の側臥位にする</li>
+</ul>
+<div class="alert">注射後 10 分でバイタル・呼吸苦・疼痛増悪を確認</div>
+<ul>
+<li>確認後、座位で Dr 診察へ誘導</li>
+</ul>
+<h3 id="s2-h4">■ 腱鞘内注射</h3>
+<h4>▶ ケナコルト（ばね指・デュケルバン病）</h4>
+<ul>
+<li>2.5ml シリンジ</li>
+<li>ケナコルト 1ml ＋ キシロカイン 1.5ml</li>
+<li>26G 針</li>
+</ul>
+<h4>▶ リンデロン（通常の⼿⾜の腱鞘炎）</h4>
+<ul>
+<li>2.5ml シリンジ</li>
+<li>リンデロン 2mg（1ml）＋ キシロカイン 1.5ml</li>
+<li>26G 針</li>
+</ul>
+<h4>▶ 患者体位</h4>
+<ul>
+<li>上肢︓座位にて、台の上に患側の腕を置いてもらう</li>
+<li>下肢︓ベッドに仰臥位（部位によっては伏臥位）</li>
+</ul>
+<h3 id="s2-h5">■ 関節注射</h3>
+<h4>▶ 膝関節注射</h4>
+<div class="box-label">【準備】</div>
+<ul>
+<li>22G 針・アルコール綿・イソジン・鑷⼦・シルキーポア</li>
+<li>ヒアルロン酸（アルツ）はパッケージから出す前に患者へ「今日は打ちますか？」と必ず確認すること（打たない場合があるため、開封すると無駄になる）</li>
+</ul>
+<div class="box-label">【体位】</div>
+<ul>
+<li>通常︓座位、膝 90 度屈曲、⾜台に⾜を乗せて下肢固定</li>
+<li>特定ケース︓仰臥位、膝下に膝枕を⼊れて固定</li>
+</ul>
+<div class="alert">PRP・エコーガイド下注射の場合は仰臥位</div>
+<h4>▶ 肩関節注射</h4>
+<div class="box-label">【準備】</div>
+<ul>
+<li>23G 針（カテランかは Dr 指⽰）・アルコール綿・シルキーポア</li>
+</ul>
+<div class="box-label">【体位】</div>
+<ul>
+<li>椅⼦に座位</li>
+</ul>
+<p class="body-text">【薬剤パターン】必ず医師に確認すること</p>
+<ul>
+<li>キシロカイン 10cc ＋ ケナコルト 1cc</li>
+<li>キシロカイン 10cc（ハイドロリリース）</li>
+<li>アルツ単体</li>
+</ul>
+<div class="alert">あわクリニックでは肩関節注射にアルツは基本使⽤しない</div>
+<h3 id="s2-h6">■ トリガーポイント注射</h3>
+<ul>
+<li>主に腰・肩こりに使⽤</li>
+<li>薬剤︓キシロカイン 10cc  針︓22G  エコー︓不要</li>
+<li>患者体位は医師が来る前に準備しておく</li>
+</ul>
+<div class="box-label">【体位】</div>
+<ul>
+<li>腰︓処置室ベッドで伏臥位、腰を出してタオルをかけておく</li>
+<li>肩こり︓上着を下ろし、⾸〜⾸の付け根が⾒えるようにしておく</li>
+</ul>
+<h3 id="s2-h7">■ ハイドロリリース</h3>
+<ul>
+<li>エコーガイド下でキシロカイン注射を実施</li>
+<li>薬剤︓キシロカイン 10cc または 5cc 単品</li>
+<li>リンデロンを追加する場合は医師から指⽰あり</li>
+<li>患者体位︓トリガーポイントと同様（腰︓伏臥位 ／ 肩こり︓⾸〜⾸の付け根を露出）</li>
+</ul>
+<h3 id="s2-h8">■ 処置︓創傷対応</h3>
+<h4>▶ 初期対応</h4>
+<ul>
+<li>患者を処置室に案内し、ベッドに座らせるか寝かせる</li>
+</ul>
+<div class="alert">出⾎している場合は必ずナイロン⼿袋を装着する</div>
+<div class="box-label">【創部状態別の対応】</div>
+<ul>
+<li>被覆物の汚染が少ない場合 → 除去して創部を確認し、医師に報告</li>
+<li>被覆物の出⾎汚染が多い場合 → 医師が除去することが多いため確認する</li>
+<li>出⾎が激しい場合 → 清潔ガーゼ（⼋つ折り）を創部側・不潔ガーゼをこちら側にしてしっかり圧迫。患者が可能なら⾃分で圧迫してもらう。できない場合は医師に声をかけてから圧迫して待つ</li>
+</ul>
+<div class="alert">無⼈放置は厳禁</div>
+<h4>▶ 消毒・洗浄</h4>
+<ul>
+<li>必ず患肢の下にホワイトシートを敷くこと</li>
+<li>医師の判断で⿇酔・洗浄を⾏う場合があるため、物品の位置を確認しておく（微温湯ボトル・吸⽔パッド）</li>
+</ul>
+<div class="box-label">【傷の状態別対応】</div>
+<ul>
+<li>⼩さい傷（汚染少）︓ヒビデン消毒＋被覆（ゲンタシン使⽤が多い）</li>
+<li>1cm 以上の傷︓微温湯洗浄が多い。準備しておく。ガーゼは⼤きめ。創部の下に適切なサイズの吸⽔パッドを敷く</li>
+<li>軽度汚染創・切創︓⿇酔→洗浄→縫合が多い。キシロカイン 5 か 10ml・シリンジ・針・微温湯・ガーゼを準備。吸⽔パッド必須</li>
+<li>⾼度汚染創︓⿇酔→洗浄するが縫合しない。キシロカイン 5 か 10ml・シリンジ・針・微温湯・ガーゼを準備。吸⽔パッド必須</li>
+</ul>
+<h4>▶ 縫合</h4>
+<ul>
+<li>切創が⼤きい場合、医師が縫合の判断をする</li>
+</ul>
+<div class="box-label">【縫合の種類と使い分け】</div>
+<ul>
+<li>ナイロン⽷縫合︓本格的な縫合。縫合セットを準備。⿇酔必須</li>
+<li>SS-テープ︓⼩児・⼩さい傷に使⽤。処置カートに常時あることを確認</li>
+<li>ステープラ︓頭部の傷・⼩さい創部（⼩児）に使⽤</li>
+<li>いずれもイソジン消毒を⾏うことが多いため準備する</li>
+<li>術後のイソジンを落とすためハイポを準備しておく</li>
+<li>処置後はガーゼ被覆を⾏うため準備する</li>
+</ul></div></section>
+<section id="s3" class="section hidden"><div class="section-header"><span class="section-num">③</span><h2>書類</h2></div><div class="section-body"><div class="mini-toc"><div class="mini-toc-title">📑 このセクションの内容</div><div class="mini-toc-links"><a href="#s3-h0" class="mini-toc-link">診察前に事務が持ち込む書類</a><a href="#s3-h1" class="mini-toc-link">医師の机上書類の取り扱い</a><a href="#s3-h2" class="mini-toc-link">レントゲン指⽰書の運⽤</a><a href="#s3-h3" class="mini-toc-link">医師記載が必要な書類</a><a href="#s3-h4" class="mini-toc-link">患者からの書類受け取り</a><a href="#s3-h5" class="mini-toc-link">他院からの紹介状・画像 CD</a></div></div><h3 id="s3-h0">■ 診察前に事務が持ち込む書類</h3>
+<p class="body-text">以下の書類が診察前に事務から持ち込まれることが多い︓</p>
+<ul>
+<li>他院からの診療情報提供書</li>
+<li>外国⼈の問診票（⽇本⼈はなし）</li>
+<li>MRI の読影結果</li>
+<li>英語診断書へのサイン</li>
+<li>学校の検診依頼書</li>
+</ul>
+<div class="alert">診察終了後、医師がレントゲン指⽰書の中にこれらを混⼊させることがあるため、回収できる場合</div>
+<p class="body-text">は回収しておくこと</p>
+<h3 id="s3-h1">■ 医師の机上書類の取り扱い</h3>
+<ul>
+<li>レントゲン指⽰書 → 診察後に破棄</li>
+<li>その他書類（紹介状・診断書など） → 事務へ渡してチェック</li>
+</ul>
+<div class="alert">破棄厳禁</div>
+<h3 id="s3-h2">■ レントゲン指⽰書の運⽤</h3>
+<ul>
+<li>医師がレントゲンオーダーを出すとプリンターから指⽰書が出⼒される</li>
+<li>技師の後ろの机に、指⽰書下部の印刷時間を確認しながら時間順に並べる</li>
+</ul>
+<h3 id="s3-h3">■ 医師記載が必要な書類</h3>
+<ul>
+<li>旅⾏会社の診断書など医師が記載すべき書類は、診察中は置いておき診察終了後にまとめて記載依頼する</li>
+</ul>
+<h3 id="s3-h4">■ 患者からの書類受け取り</h3>
+<ul>
+<li>保険会社・学校等からの書類は受付で受領・説明を⾏う</li>
+<li>診察室内では受け取らない</li>
+</ul>
+<h3 id="s3-h5">■ 他院からの紹介状・画像 CD</h3>
+<ul>
+<li>他院からの画像 CD → 回収して PC に読み込む</li>
+<li>紹介状 → 医師確認後、受付でスキャン。原本は基本的に患者へ返却</li>
+</ul></div></section>
+<section id="s4" class="section hidden"><div class="section-header"><span class="section-num">④</span><h2>レントゲン関連</h2></div><div class="section-body"><div class="mini-toc"><div class="mini-toc-title">📑 このセクションの内容</div><div class="mini-toc-links"><a href="#s4-h0" class="mini-toc-link">技師不在時の対応</a></div></div><h3 id="s4-h0">■ 技師不在時の対応</h3>
+<ul>
+<li>技師不在時は患者の体位設置のみ対応することがある以下の部位の体位は事前に医師から指導を受けておくこと︓</li>
+<li>指 ／ ⼿関節</li>
+<li>両膝</li>
+<li>⾜関節</li>
+<li>⾜部</li>
+<li>頸椎・腰椎</li>
+<li>肩</li>
+<li>上記以外は都度医師に確認する</li>
+</ul>
+<div class="alert">基本的に医師から体位指⽰が出るよう運⽤するため、勝⼿に判断しないこと</div></div></section>
+<section id="s5" class="section hidden"><div class="section-header"><span class="section-num">⑤</span><h2>電子カルテ</h2></div><div class="section-body"><div class="mini-toc"><div class="mini-toc-title">📑 このセクションの内容</div><div class="mini-toc-links"><a href="#s5-h0" class="mini-toc-link">待ち時間中の先読みカルテ確認</a></div></div><h3 id="s5-h0">■ 待ち時間中の先読みカルテ確認</h3>
+<ul>
+<li>⼿が空いた際、受付待ち患者のカルテを開き、レントゲン・⾻密度の指⽰がないか確認する</li>
+<li>前回診察時カルテに次回 DEXA・採⾎・レントゲンの指⽰がないか確認する</li>
+<li>検査指⽰がある場合は先に出⼒し、レントゲン技師に渡す</li>
+</ul>
+<div class="alert">初診患者は対象外（再診患者のみ実施）</div>
+<div class="alert">レントゲン撮影は不要な場合もあるため、必ず内容を確認・注意すること</div></div></section>
+<section id="s6" class="section hidden"><div class="section-header"><span class="section-num">⑥</span><h2>リハビリ連携</h2></div><div class="section-body"><div class="mini-toc"><div class="mini-toc-title">📑 このセクションの内容</div><div class="mini-toc-links"><a href="#s6-h0" class="mini-toc-link">新規リハビリ指⽰の伝達</a><a href="#s6-h1" class="mini-toc-link">松葉杖処⽅発⽣時</a></div></div><h3 id="s6-h0">■ 新規リハビリ指⽰の伝達</h3>
+<ul>
+<li>医師がインカムでセラピストに伝えられない場合、看護師が代わりに以下を伝え返事を受け取る︓</li>
+<li>担当者名</li>
+<li>新規リハビリ か 既存リハビリ か</li>
+<li>開始時間</li>
+<li>通常リハ か ⾃賠リハ か</li>
+</ul>
+<div class="alert">「無理」と⾔われた場合は必ず医師に報告する</div>
+<h3 id="s6-h1">■ 松葉杖処⽅発⽣時</h3>
+<ul>
+<li>シーネ等固定後に松葉杖が必要な場合はリハビリ側が対応</li>
+<li>インカムで「松葉杖指導お願いします、⾝⻑は〜cm」と伝える</li>
+<li>カルテのコメント欄に「松葉指導、〜cm」と記載する</li>
+</ul></div></section>
+<section id="s7" class="section hidden"><div class="section-header"><span class="section-num">⑦</span><h2>緊急・イレギュラー対応</h2></div><div class="section-body"><div class="mini-toc"><div class="mini-toc-title">📑 このセクションの内容</div><div class="mini-toc-links"><a href="#s7-h0" class="mini-toc-link">クレーム対応</a><a href="#s7-h1" class="mini-toc-link">患者からの医療に関する質問</a><a href="#s7-h2" class="mini-toc-link">患者の状態別対応</a></div></div><h3 id="s7-h0">■ クレーム対応</h3>
+<ul>
+<li>まず話をしっかり聞き、内容を簡潔にまとめて医師へ報告する</li>
+<li>内容によっては事務⻑にも確認・報告を⾏う</li>
+</ul>
+<div class="alert">その場での曖昧な返答・約束は厳禁</div>
+<h3 id="s7-h1">■ 患者からの医療に関する質問</h3>
+<ul>
+<li>患者から医療内容について質問された場合は、必ず医師に確認してから回答する</li>
+</ul>
+<div class="alert">曖昧な返答は厳禁（例︓採⾎項⽬について「重複しているものもあります」「違います」等は NG）</div>
+<div class="alert">不⽤意な返答はトラブルの原因となるため徹底すること</div>
+<h3 id="s7-h2">■ 患者の状態別対応</h3>
+<h4>▶ 出⾎時</h4>
+<ul>
+<li>事務からの連絡があり次第、速やかに⼿袋を装着し出⾎部をガーゼで圧迫（不潔ガーゼ可）</li>
+<li>処置室での出⾎時も同様にガーゼで圧迫</li>
+</ul>
+<div class="alert">圧迫後、速やかに医師へ報告・早期診察を促すこと</div>
+<div class="alert">⼿袋なしでの対応禁⽌</div>
+<h4>▶ 疼痛時（動けない場合）</h4>
+<ul>
+<li>処置室に仰臥位で安静にしてもらう</li>
+<li>処置室が満室の場合はリハビリ室等の利⽤を検討・スタッフに相談</li>
+</ul>
+<div class="alert">医師に早めに診察を促す（ボルタレンサポ等の使⽤判断あり）</div>
+<h4>▶ 汚染時（泥・⾎液・⾐服汚染）</h4>
+<ul>
+<li>ベッド・机にアンダーペーパー等を敷き、汚染が広がらないようにする</li>
+<li>汚染部位は清拭を⾏う</li>
+</ul>
+<div class="alert">不必要に患者をあちこち動かさないこと</div>
+<h4>▶ 転倒時</h4>
+<ul>
+<li>転倒を確認次第、速やかに状態をチェックし医師を呼ぶ</li>
+<li>処置室またはリハビリ室のベッドに横になってもらう</li>
+</ul>
+<div class="alert">その場への放置厳禁</div>
+<div class="alert">脳出⾎等が疑われる場合は安易に動かさず、医師の指⽰に従うこと</div>
+<h4>▶ 意識消失時</h4>
+<div class="alert">直ちに側臥位にして気道を確保</div>
+<div class="alert">即座に医師へ連絡</div>
+<h4>▶ 処置後気分不良時（ブロック・注射等）</h4>
+<div class="note">※ ⾃覚症状がなくても⾒た⽬の状態が悪そうな場合も同様に対応すること</div>
+<ul>
+<li>⾎圧を測定する</li>
+<li>サーチ（SpO2 モニター）を指に装着する</li>
+<li>下肢挙上を⾏う</li>
+<li>直ちに医師へ連絡</li>
+</ul>
+<div class="alert">いつでも点滴開始できるよう準備しておく</div></div></section>
+<section id="s8" class="section hidden"><div class="section-header"><span class="section-num">⑧</span><h2>その他</h2></div><div class="section-body"><div class="mini-toc"><div class="mini-toc-title">📑 このセクションの内容</div><div class="mini-toc-links"><a href="#s8-h0" class="mini-toc-link">体幹コルセット採⼨</a><a href="#s8-h1" class="mini-toc-link">装具診察・装具屋への連絡</a><a href="#s8-h2" class="mini-toc-link">⾃⼰注射処⽅時の準備</a><a href="#s8-h3" class="mini-toc-link">⾃⼰注射指導（テリパラチド製剤）</a><a href="#s8-h4" class="mini-toc-link">患者からの質問</a></div></div><h3 id="s8-h0">■ 体幹コルセット採⼨</h3>
+<ul>
+<li>主に腰椎圧迫⾻折などでコルセット作成時に採⼨を⾏う</li>
+<li>採⼨結果を⽤紙に記載し、事務に渡す</li>
+</ul>
+<h3 id="s8-h1">■ 装具診察・装具屋への連絡</h3>
+<ul>
+<li>コルセット作成・特殊装具などは当院では装具屋に依頼</li>
+<li>装具が出た場合は必ず事務に伝え、装具屋へ連絡してもらうよう依頼する</li>
+<li>連絡の際は装着する装具の概要を伝える（内容はカルテに記載されていることが多い）</li>
+</ul>
+<h3 id="s8-h2">■ ⾃⼰注射処⽅時の準備</h3>
+<ul>
+<li>診察で医師が⾃⼰注射を処⽅する場合、アルコール綿パック（1 箱）を診察前にあらかじめ準備しておく</li>
+<li>横に置いておけば医師が患者に渡してくれる</li>
+</ul>
+<h3 id="s8-h3">■ ⾃⼰注射指導（テリパラチド製剤）</h3>
+<ul>
+<li>会計後に患者が薬局で注射を受け取り、クリニックに戻ってきた後に看護師が⾃⼰注射指導を⾏う</li>
+<li>指導⽅法は事前に⼀度確認しておくこと</li>
+<li>「毎⽇打つ必要がありますか︖」と聞かれることが多い</li>
+<li>毎⽇打つタイプの製剤の場合︓「⽇曜⽇はスキップしていいですよ（追記）」と伝える</li>
+</ul>
+<div class="note">※ 理由︓1 ヶ⽉分がちょうど持たなくなるため。製剤によって異なるので注意</div>
+<div class="box-label">【理解が不⼗分な場合の対応】</div>
+<ul>
+<li>理解が不⼗分な場合︓「何度かやってみてきてください」と伝える</li>
+<li>不安が強い場合︓「しばらく 2、3 ⽇受診してもらえたら指導しますよ」と伝える</li>
+</ul>
+<h3 id="s8-h4">■ 患者からの質問</h3>
+<h4>▶ 診断書の提出後、どれくらいでもらえますか︖</h4>
+<ul>
+<li>提出から約 2 週間が⽬安と伝える</li>
+</ul>
+<h4>▶ リハビリの予約⽅法を教えてください</h4>
+<ul>
+<li>初回︓会計で予約</li>
+<li>2 回⽬以降︓ウェブ予約が可能</li>
+</ul>
+<div class="alert">キャンセルが続くとリハビリ予約ができなくなるため、キャンセルの場合はできるだけ前⽇までに</div>
+<p class="body-text">電話で連絡するよう伝える</p>
+<ul>
+<li>40 分（2 枠）予約が必要な⽅（個室使⽤が必要なケース︓産前産後・⼦ども連れなど）はウェブ予約不可のため、「お会計の際に予約をしてください」と案内する（該当患者のみ）</li>
+</ul>
+<h4>▶ リハビリに来ているが、診察はいつ⼊ればよいですか︖</h4>
+<ul>
+<li>基本的に⽉ 1 回は診察室に⼊り、リハビリ・改善状態を医師に確認してもらう</li>
+<li>治りが悪い場合は⽅針を変更することもある旨を伝える</li>
+</ul>
+<div class="box-label">【診察室に⼊るべきケース】</div>
+<ul>
+<li>薬がなくなったとき</li>
+<li>① 受付でその旨を伝えれば予約を取る</li>
+<li>② もしくはホームページから診察の順番予約を取るよう案内する</li>
+</ul></div></section>
+<section id="s9" class="section hidden"><div class="section-header"><span class="section-num">⑨</span><h2>交通事故</h2></div><div class="section-body"><div class="mini-toc"><div class="mini-toc-title">📑 このセクションの内容</div><div class="mini-toc-links"><a href="#s9-h0" class="mini-toc-link">よくある質問</a></div></div><h3 id="s9-h0">■ よくある質問</h3>
+<h4>▶ 「整⾻院に⾏ってもいいですか︖」</h4>
+<ul>
+<li>基本的に当院と連携している整⾻院以外の並⾏通院はお断り</li>
+</ul>
+<div class="alert">連携外の整⾻院に通院した場合、以後の診察・診断書・後遺症診断が書けなくなるため注意</div>
+<p class="body-text">以下いずれかで対応︓</p>
+<ul>
+<li>その整⾻院のかかりつけ病院にお願いするよう伝える</li>
+<li>当院の連携整⾻院を紹介する旨を伝える</li>
+</ul>
+<h4>▶ 「どうしても他の整⾻院に⾏きたい場合」</h4>
+<ul>
+<li>連携外の整⾻院では情報共有ができないため、保険会社の⽀払い対象外となったり、診断書等の信憑性がなくなる場合があることを伝える</li>
+<li>他の整⾻院に⾏きたい場合は、その整⾻院と関係している病院・クリニックで以後の診察を受けるよう案内する</li>
+</ul>
+<div class="alert">黙って連携外の整⾻院に通院していた場合、保険会社が⽀払いをしないことがあるため必ず事前に</div>
+<p class="body-text">説明すること</p>
+<h4>▶ 「診断書はいつもらえますか︖」</h4>
+<ul>
+<li>警察・会社提出⽤の診断書︓当⽇お渡し可能</li>
+<li>後遺症診断書・保険会社向け診断書︓作成に数週間かかる旨を伝える</li>
+</ul>
+<h4>▶ 「リハビリはいつ来たらいいですか︖」</h4>
+<ul>
+<li>⾸・腰などのリハビリ︓どのセラピストでも対応可。診療時間内の決まった時間に来院いただければ対応可能と伝える</li>
+<li>⾻折・肩が動かないなどのリハビリ︓担当制・予約制。会計にて予約⽅法を確認・案内するよう伝える</li>
+</ul>
+<h4>▶ 「診察室にはいつ⼊ったらいいですか︖」</h4>
+<ul>
+<li>⽉ 1 回は診察室で医師の診察を受けるようお伝えする</li>
+<li>薬がなくなった際はリハビリ中にその旨を伝えてもらうよう案内する（必要に応じて診察室に⼊ってもらう）</li>
+</ul>
+<h4>▶ 「リハビリは何回ぐらい来たらいいですか︖」</h4>
+<ul>
+<li>お仕事の忙しさと症状のつらさによって決めていただいてよい旨を伝える</li>
+<li>「毎⽇来られる⽅もいれば、週 2 回ほどの⽅もおられます」と案内する</li>
+<li>症状を早く改善したい場合は、回数が多いほど早く取れることが多いですと伝える</li>
+</ul>
+<h4>▶ 「預かり⾦はいつ返してもらえますか︖」</h4>
+<ul>
+<li>保険会社の確認が取れ次第お返しできる旨を伝える</li>
+<li>上限 3 万円までのため、早めに保険会社の担当者から当院へ連絡するようお伝えする</li>
+<li>保険会社担当者の連絡先を事務に伝えてもらえれば、こちらからも確認できると案内する</li>
+</ul></div></section>
+<div id="search-results" class="section hidden"><div class="section-header"><div class="section-num" style="font-size:1.4rem">🔍</div><h2>検索結果</h2></div><div id="results-body"></div></div>
+</main>
+</div>
+<script>
+const secNames={"s1":"① 診察全般","s2":"② 処置・注射","s3":"③ 書類","s4":"④ レントゲン関連","s5":"⑤ 電子カルテ","s6":"⑥ リハビリ連携","s7":"⑦ 緊急・イレギュラー対応","s8":"⑧ その他","s9":"⑨ 交通事故"};
+function showSection(id){
+  document.querySelectorAll('.section').forEach(function(s){s.classList.add('hidden');});
+  document.querySelectorAll('.toc-item').forEach(function(t){t.classList.remove('active');});
+  var el=document.getElementById(id);
+  if(el){el.classList.remove('hidden');}
+  document.getElementById('main').scrollTop=0;
+  var toc=document.getElementById('toc-'+id);
+  if(toc)toc.classList.add('active');
+}
+document.querySelectorAll('[data-target]').forEach(function(el){
+  el.addEventListener('click',function(e){
+    e.preventDefault();
+    var id=el.getAttribute('data-target');
+    document.getElementById('search').value='';
+    document.getElementById('search-count').textContent='';
+    showSection(id);
+  });
+});
+// ミニ目次のアンカークリック
+document.addEventListener('click',function(e){
+  var a=e.target.closest('.mini-toc-link');
+  if(!a)return;
+  e.preventDefault();
+  var href=a.getAttribute('href');
+  if(!href)return;
+  var target=document.querySelector(href);
+  if(target){
+    var main=document.getElementById('main');
+    var offset=target.offsetTop-16;
+    main.scrollTo({top:offset,behavior:'smooth'});
+  }
+});
+var searchEl=document.getElementById('search');
+var countEl=document.getElementById('search-count');
+var resultsSection=document.getElementById('search-results');
+var resultsBody=document.getElementById('results-body');
+searchEl.addEventListener('input',function(){
+  var q=this.value.trim();
+  if(!q){countEl.textContent='';showSection('home');return;}
+  var re=new RegExp(q,'gi');
+  var total=0,html='';
+  document.querySelectorAll('.section:not(#search-results):not(#home)').forEach(function(sec){
+    var body=sec.querySelector('.section-body');
+    if(!body)return;
+    var nodes=body.querySelectorAll('li,.alert,.note,h3,h4,.box-label,.body-text,td');
+    var items='';
+    nodes.forEach(function(node){
+      var txt=node.innerText||node.textContent;
+      if(re.test(txt)){
+        var safe=txt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        var hl=safe.replace(re,function(m){return '<mark>'+m+'</mark>';});
+        items+='<div class="result-item">'+hl+'</div>';
+        total++;
+      }
+    });
+    if(items)html+='<div class="result-group"><h3 style="margin-top:0;scroll-margin-top:0">'+secNames[sec.id]+'</h3>'+items+'</div>';
+  });
+  countEl.textContent=total>0?''+total+' 件':'該当なし';
+  resultsBody.innerHTML=html||'<div class="no-results">見つかりませんでした</div>';
+  document.querySelectorAll('.section').forEach(function(s){s.classList.add('hidden');});
+  document.querySelectorAll('.toc-item').forEach(function(t){t.classList.remove('active');});
+  resultsSection.classList.remove('hidden');
+});
+</script>
+</body>
+</html>
